@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 export const Acordion = ({ id, initialState, title, description, image }) => {
  const [isAccordionOpen, setIsAccordionOpen] = useState(initialState);
@@ -18,18 +20,17 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
   setIsAccordionOpen(!isAccordionOpen);
  };
 
- //rr
+ const handleRemoveCover = (e) => {
+  // Evitar que el clic se propague hacia arriba
+  e.stopPropagation();
+ };
 
  return (
   <Box>
    <Accordion expanded={isAccordionOpen} onChange={handleAccordionToggle}>
     <AccordionSummary
      expandIcon={
-      <ExpandMoreIcon
-       sx={{
-        display: isAccordionOpen ? "none" : { xs: "none", md: "flex" },
-       }}
-      />
+      <ExpandMoreIcon sx={{ display: { xs: "none", md: "flex" } }} />
      }
      /*     aria-controls='panel1a-content'
      id='panel1a-header'
@@ -62,7 +63,7 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
 
        <Box
         sx={{
-         display: isAccordionOpen ? "none" : "flex",
+         display: { xs: "none", md: "flex" },
          mb: "1.5rem",
          justifyContent: "flex-start",
         }}
@@ -75,7 +76,29 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
           fontSize: "1.3rem",
           ml: "72px",
          }}
+         onClick={handleRemoveCover}
+        >
+         <RemoveCircleOutlineIcon sx={{ mb: "0.2rem", mr: "0.5rem" }} />
+         QUITAR
+        </Button>
+       </Box>
+
+       <Box
+        sx={{
+         display: { xs: isAccordionOpen ? "none" : "flex", md: "none" },
+         mb: "1.5rem",
+         justifyContent: "flex-start",
+        }}
+       >
+        <Button
          onClick={handleAccordionToggle}
+         sx={{
+          p: 0,
+          mt: "0.5rem",
+          color: "#6F7DFF",
+          fontSize: "1.3rem",
+          ml: "72px",
+         }}
         >
          VER MAS
          <ExpandMoreIcon sx={{ mb: "0.2rem", ml: "0.5rem" }} />
@@ -103,6 +126,7 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
       variant='p'
       component='p'
       sx={{
+       mb: "1rem",
        ml: "72px",
        mr: "40px",
        fontSize: "1.5rem",
@@ -116,6 +140,7 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
       <Button
        onClick={handleAccordionToggle}
        sx={{
+        display: { xs: "flex", md: "none" },
         p: 0,
         mt: "2rem",
         ml: "72px",
