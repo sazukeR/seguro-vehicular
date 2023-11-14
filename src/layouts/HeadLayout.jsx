@@ -1,11 +1,23 @@
-
-import { Grid, Link, IconButton, Typography, Toolbar, Box, AppBar  } from "@mui/material";
+import {
+ Grid,
+ Link,
+ IconButton,
+ Typography,
+ Toolbar,
+ Box,
+ AppBar,
+} from "@mui/material";
 
 export const HeadLayout = ({ children }) => {
  return (
   <>
    <Box
-    sx={{ flexGrow: 1, m: "auto", bgcolor: "#FAFBFF", maxWidth: "1400px" }}
+    sx={{
+     flexGrow: 1,
+     m: "auto",
+     bgcolor: "#FAFBFF",
+     /*  maxWidth: "1400px", */
+    }}
     height='10vh'
    >
     <AppBar
@@ -60,7 +72,6 @@ export const HeadLayout = ({ children }) => {
      </Toolbar>
     </AppBar>
    </Box>
-
    {children}
   </>
  );
