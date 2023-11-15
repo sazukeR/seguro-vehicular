@@ -8,13 +8,16 @@ import {
 
 export const useCounterStore = () => {
  const dispatch = useDispatch();
- const { counter } = useSelector((state) => state.policy);
+ const { counter, payment } = useSelector((state) => state.policy);
 
  const incrementCounter = () => {
   if (counter >= 16500) return;
 
   dispatch(increment());
-  if (counter === 16000) dispatch(decrementCoverageRedLight());
+  if (counter === 16000) {
+   if (payment === 20) return;
+   dispatch(decrementCoverageRedLight());
+  }
  };
 
  const decrementtCounter = () => {

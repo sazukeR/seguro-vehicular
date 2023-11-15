@@ -1,3 +1,5 @@
+import { useAuthStore } from "../hooks/useAuthStore";
+
 import {
  Grid,
  Link,
@@ -9,6 +11,8 @@ import {
 } from "@mui/material";
 
 export const HeadLayout = ({ children }) => {
+ const { startLogout } = useAuthStore();
+
  return (
   <>
    <Box
@@ -18,7 +22,6 @@ export const HeadLayout = ({ children }) => {
      bgcolor: "#FAFBFF",
      maxWidth: "1400px",
     }}
-    height='10vh'
    >
     <AppBar
      position='static'
@@ -28,7 +31,13 @@ export const HeadLayout = ({ children }) => {
      <Toolbar>
       <Grid container display='flex' justifyContent='space-between'>
        <Grid item>
-        <IconButton size='large' edge='start' color='inherit' aria-label='menu'>
+        <IconButton
+         onClick={startLogout}
+         size='large'
+         edge='start'
+         color='inherit'
+         aria-label='menu'
+        >
          <img src='src\assets\Logo_RIMAC.svg' />
         </IconButton>
        </Grid>

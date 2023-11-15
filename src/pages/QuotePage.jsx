@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCounterStore } from "../hooks/useCounterStore";
+import { useAuthStore } from "../hooks/useAuthStore";
+import { useNavigate } from "react-router-dom";
 import {
  Grid,
  Button,
@@ -9,35 +11,28 @@ import {
  Divider,
 } from "@mui/material";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { useAuthStore } from "../hooks/useAuthStore";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useTheme } from "@emotion/react";
 import { Acordion } from "../components/Acordion";
 import { HeadLayout } from "../layouts/HeadLayout";
-import { useEffect } from "react";
-import {
- decrementCoverageRedLight,
- incrementCoverageRedLight,
-} from "../store/policy/policySlice";
 
 export const QuotePage = () => {
  const { startLogout, user } = useAuthStore();
- //const dispatch = useDispatch();
 
  const theme = useTheme();
 
- const dispatch = useDispatch();
+ const navigate = useNavigate();
+
+ const handleNavigation = () => {
+  localStorage.setItem("total", payment);
+  navigate("/thanks");
+ };
 
  const { counter, payment, coverageTires, coverageRedLight, coverageRoad } =
   useSelector((state) => state.policy);
  const { incrementCounter, decrementtCounter } = useCounterStore();
-
- useEffect(() => {
-  if (counter > 16000) dispatch(decrementCoverageRedLight());
-  else dispatch(incrementCoverageRedLight());
- }, []);
 
  return (
   <>
@@ -241,14 +236,14 @@ export const QuotePage = () => {
             component='p'
             sx={{ fontSize: { xs: "0.9rem", sm: "1.3rem" }, color: "#9E9E9E" }}
            >
-            Placa: C2U-114
+            Placa: {user.placa}
            </Typography>
            <Typography
             variant='h6'
             component='h6'
             sx={{ fontSize: { xs: "1.1rem", sm: "1.5rem" } }}
            >
-            Wolkswagen 2019 Golf
+            {user.modelo}
            </Typography>
           </Box>
 
@@ -502,7 +497,7 @@ export const QuotePage = () => {
           justifyContent: "center",
          }}
         >
-         <button className='my-button'>
+         <button onClick={handleNavigation} className='my-button'>
           <Typography sx={{ fontSize: "1.5rem", display: { md: "none" } }}>
            lo quiero
           </Typography>
