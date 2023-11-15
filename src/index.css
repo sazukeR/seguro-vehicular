@@ -67,3 +67,6 @@ label.acordion-label:active:after {
   }
 }
 
+.MuiFormControlLabel-asterisk {
+  display: none;
+}

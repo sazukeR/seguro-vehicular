@@ -1,4 +1,5 @@
 import { useTheme } from "@emotion/react";
+import { useForm } from "../hooks/useForm";
 import {
  Box,
  Grid,
@@ -15,12 +16,57 @@ import {
 import useImagenResponsive from "../hooks/useImagenResponsive";
 import { HeadLayout } from "../layouts/HeadLayout";
 
+import { useAuthStore } from "../hooks/useAuthStore";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+
+const loginFormFields = {
+ doc: "DNI",
+ noDoc: "",
+ cel: "",
+ placa: "",
+};
+
 export const AuthPage = () => {
+ const { startLogin, errorMessage } = useAuthStore();
+
  const imagenPathGrande = "src/assets/ldng2.png";
  const imagenPathPequeno = "src/assets/lndxs.svg";
  const imagenPath = useImagenResponsive(imagenPathGrande, imagenPathPequeno);
 
  const theme = useTheme();
+
+ const { doc, noDoc, cel, placa, onInputChange } = useForm(loginFormFields);
+ //const [errorValidation, setErrorValidation] = useState("");
+
+ /*  useEffect(() => {
+  if (errorValidation !== "Todos los campos son obligatorios") {
+   console.log("rr");
+  }
+ }, [errorValidation]); */
+
+ const onSubmit = (e) => {
+  e.preventDefault();
+
+  if (doc === "" || noDoc === "" || cel === "" || placa === "") {
+   Swal.fire(
+    "Error en la autenticacion",
+    "Todos los campos son obligatorios",
+    "error"
+   );
+
+   return;
+  }
+
+  startLogin({ placa });
+ };
+
+ useEffect(() => {
+  if (errorMessage !== undefined) {
+   Swal.fire("Error en la autenticacion", errorMessage, "error");
+  }
+ }, [errorMessage]);
+
  return (
   <HeadLayout>
    <Grid
@@ -142,98 +188,109 @@ export const AuthPage = () => {
      <Typography variant='h5' component='h5' sx={{ mb: 2 }}>
       Déjanos tus datos
      </Typography>
-     <FormControl>
-      <Grid container sx={{ maxWidth: "600px" }}>
-       <Grid item xs={12} sx={{ mt: 0, display: "flex" }}>
-        {/*      <InputLabel id='select' sx={{ fontWeight: "bold" }}>
+     <form onSubmit={onSubmit}>
+      <FormControl>
+       <Grid container sx={{ maxWidth: "600px" }}>
+        <Grid item xs={12} sx={{ mt: 0, display: "flex" }}>
+         {/*      <InputLabel id='select' sx={{ fontWeight: "bold" }}>
         Doc
        </InputLabel> */}
-        <Select
-         labelId='select'
-         id='simple-select'
-         value='DNI'
-         /*   onChange={handleChange} */
-         sx={{ width: "7rem" }}
-         autoWidth
-         /*   label='DNI' */
-        >
-         <MenuItem value='DNI'>DNI</MenuItem>
-         <MenuItem value='CE'>CE</MenuItem>
-         <MenuItem value='Pasaporte'>Pasaporte</MenuItem>
-        </Select>
-        <TextField
-         label='Nro de doc'
-         type='text'
-         placeholder='471149'
-         fullWidth
-         name='nombre'
-        />
-       </Grid>
-       <Grid item xs={12} sx={{ mt: 2 }}>
-        <TextField
-         label='Celular'
-         type='text'
-         placeholder='999888999'
-         fullWidth
-         name='celular'
-        />
-       </Grid>
-       <Grid item xs={12} sx={{ mt: 2 }}>
-        <TextField
-         label='Placa Nro'
-         type='text'
-         placeholder='FPF848'
-         fullWidth
-         name='placa'
-        />
-       </Grid>
-       <Grid item xs={12} sx={{ mt: 4 }}>
-        <FormControlLabel
-         control={
-          <Checkbox
-           sx={{
-            mt: "-1.5rem",
-            ml: "-0.4rem",
-            color: "#C5C5C5",
-            "&.Mui-checked": {
-             color: "#00C853",
-            },
-           }}
-          />
-         }
-         label={
-          <Typography color='#808080'>
-           Acepto la{" "}
-           <Link href='#' color='#808080' fontWeight='bold'>
-            Política de Protección de Datos Personales
-           </Link>
-           {" y los "}
-           <Link href='#' color='#808080' fontWeight='bold'>
-            Términos y Condiciones
-           </Link>
-           .
-          </Typography>
-         }
-         /* style={{ marginTop: '-4px' }} */
-        />
-       </Grid>
-       <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
-        {/*        <Grid item xs={12} display={!!errorMessage ? "" : "none"}>
+         <Select
+          labelId='select'
+          id='simple-select'
+          type='select'
+          name='doc'
+          value={doc}
+          onChange={onInputChange}
+          sx={{ width: "7rem" }}
+          autoWidth
+          /*   label='DNI' */
+         >
+          <MenuItem value='DNI'>DNI</MenuItem>
+          <MenuItem value='CE'>CE</MenuItem>
+          <MenuItem value='Pasaporte'>Pasaporte</MenuItem>
+         </Select>
+         <TextField
+          label='Nro de doc'
+          type='text'
+          placeholder='471149'
+          fullWidth
+          name='noDoc'
+          value={noDoc}
+          onChange={onInputChange}
+         />
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 2 }}>
+         <TextField
+          label='Celular'
+          type='text'
+          placeholder='999888999'
+          fullWidth
+          name='cel'
+          value={cel}
+          onChange={onInputChange}
+         />
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 2 }}>
+         <TextField
+          label='Placa Nro'
+          type='text'
+          placeholder='FPF848'
+          fullWidth
+          name='placa'
+          value={placa}
+          onChange={onInputChange}
+         />
+        </Grid>
+        <Grid item xs={12} sx={{ mt: 4 }}>
+         <FormControlLabel
+          control={
+           <Checkbox
+            required
+            sx={{
+             mt: "-1.5rem",
+             ml: "-0.4rem",
+             color: "#C5C5C5",
+             "&.Mui-checked": {
+              color: "#00C853",
+             },
+            }}
+           />
+          }
+          label={
+           <Typography variant='span' component='span' color='#808080'>
+            Acepto la{" "}
+            <Link href='#' color='#808080' fontWeight='bold'>
+             Política de Protección de Datos Personales
+            </Link>
+            {" y los "}
+            <Link href='#' color='#808080' fontWeight='bold'>
+             Términos y Condiciones
+            </Link>
+            .
+           </Typography>
+          }
+          /* style={{ marginTop: '-4px' }} */
+         />
+        </Grid>
+        <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+         {/*        <Grid item xs={12} display={!!errorMessage ? "" : "none"}>
         <Alert severity='error'>{errorMessage}</Alert>
        </Grid> */}
-        <Grid item xs={12} sm={6}>
-         <Button
-          type='submit'
-          variant='contained'
-          fullWidth
-          sx={{ borderRadius: "10px", py: "1rem" }}
-         >
-          COTÌZALO
-         </Button>
+         <Grid item xs={12} sm={6}>
+          <Button
+           type='submit'
+           variant='contained'
+           fullWidth
+           sx={{ borderRadius: "10px", py: "1rem" }}
+          >
+           COTÌZALO
+          </Button>
+         </Grid>
         </Grid>
        </Grid>
-      </Grid>
-     </FormControl>
+      </FormControl>
+     </form>
     </Grid>
    </Grid>
   </HeadLayout>

@@ -13,8 +13,11 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useTheme } from "@emotion/react";
 import { Acordion } from "../components/Acordion";
 import { HeadLayout } from "../layouts/HeadLayout";
+import { useAuthStore } from "../hooks/useAuthStore";
 
 export const QuotePage = () => {
+ const { startLogout, user } = useAuthStore();
+
  const theme = useTheme();
 
  return (
@@ -103,6 +106,7 @@ export const QuotePage = () => {
            width: "1.5rem",
            height: "1.5rem",
           }}
+          onClick={startLogout}
          >
           <ArrowBackIosNewRoundedIcon
            sx={{
@@ -159,8 +163,31 @@ export const QuotePage = () => {
         }}
        >
         <Box sx={{ width: "80%", my: "2.5rem" }}>
-         <Typography variant='h3' component='h3' mb={1.5}>
+         <Typography
+          variant='h3'
+          component='h3'
+          mb={1.5}
+          sx={{ display: { xs: "flex", md: "none" } }}
+         >
           Mira las coberturas
+         </Typography>
+         <Typography
+          variant='h3'
+          component='h3'
+          mb={1.5}
+          sx={{ display: { xs: "none", md: "inline-flex" } }}
+         >
+          ¡Hola,&nbsp;
+         </Typography>
+         <Typography
+          variant='h3'
+          component='h3'
+          sx={{
+           color: theme.palette.primary.main,
+           display: { xs: "none", md: "inline-flex" },
+          }}
+         >
+          {user.username}!
          </Typography>
          <Typography
           variant='p'
