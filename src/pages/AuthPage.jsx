@@ -17,7 +17,7 @@ import useImagenResponsive from "../hooks/useImagenResponsive";
 import { HeadLayout } from "../layouts/HeadLayout";
 
 import { useAuthStore } from "../hooks/useAuthStore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 const loginFormFields = {

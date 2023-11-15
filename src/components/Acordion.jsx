@@ -11,10 +11,35 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+/* import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { useDispatch, useSelector } from "react-redux";
+import {
+ decrementPayment,
+ incrementPayment,
+} from "../store/policy/policySlice"; */
+import { useDispatch, useSelector } from "react-redux";
+import {
+ decrementCoverageRedLight,
+ decrementCoverageRoad,
+ decrementCoverageTires,
+ incrementCoverageRedLight,
+ incrementCoverageRoad,
+ incrementCoverageTires,
+} from "../store/policy/policySlice";
 
-export const Acordion = ({ id, initialState, title, description, image }) => {
+export const Acordion = ({
+ id,
+ initialState,
+ title,
+ description,
+ image,
+ coverageStatus,
+}) => {
  const [isAccordionOpen, setIsAccordionOpen] = useState(initialState);
+
+ const { counter } = useSelector((state) => state.policy);
+
+ const dispatch = useDispatch();
 
  const handleAccordionToggle = () => {
   setIsAccordionOpen(!isAccordionOpen);
@@ -23,6 +48,37 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
  const handleRemoveCover = (e) => {
   // Evitar que el clic se propague hacia arriba
   e.stopPropagation();
+ };
+
+ const handleCheckbox = (e) => {
+  /*   if (e.target.checked) return dispatch(incrementPayment(coverage));
+  else return dispatch(decrementPayment(coverage)); */
+
+  /* dispatch(turnCoverageRedLight(e.target.checked)); */
+  if (e.target.checked) {
+   if (e.target.id === "switch-1") {
+    return dispatch(incrementCoverageTires());
+   }
+
+   if (e.target.id === "switch-2") {
+    if (counter > 16000) return;
+    return dispatch(incrementCoverageRedLight());
+   }
+   if (e.target.id === "switch-3") {
+    return dispatch(incrementCoverageRoad());
+   }
+  } else {
+   if (e.target.id === "switch-1") {
+    return dispatch(decrementCoverageTires());
+   }
+
+   if (e.target.id === "switch-2") {
+    return dispatch(decrementCoverageRedLight());
+   }
+   if (e.target.id === "switch-3") {
+    return dispatch(decrementCoverageRoad());
+   }
+  }
  };
 
  return (
@@ -115,7 +171,13 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
       >
        {/*       <input type='checkbox' id='switch' />
       <label htmlFor='switch'>Toggle</label> */}
-       <input className='acordion-input' type='checkbox' id={`switch-${id}`} />
+       <input
+        checked={coverageStatus}
+        onChange={handleCheckbox}
+        className='acordion-input'
+        type='checkbox'
+        id={`switch-${id}`}
+       />
        <label className='acordion-label' htmlFor={`switch-${id}`}>
         Toggle
        </label>

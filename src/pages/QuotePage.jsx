@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useCounterStore } from "../hooks/useCounterStore";
 import {
  Grid,
  Button,
@@ -7,18 +9,35 @@ import {
  Divider,
 } from "@mui/material";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import { useAuthStore } from "../hooks/useAuthStore";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useTheme } from "@emotion/react";
 import { Acordion } from "../components/Acordion";
 import { HeadLayout } from "../layouts/HeadLayout";
-import { useAuthStore } from "../hooks/useAuthStore";
+import { useEffect } from "react";
+import {
+ decrementCoverageRedLight,
+ incrementCoverageRedLight,
+} from "../store/policy/policySlice";
 
 export const QuotePage = () => {
  const { startLogout, user } = useAuthStore();
+ //const dispatch = useDispatch();
 
  const theme = useTheme();
+
+ const dispatch = useDispatch();
+
+ const { counter, payment, coverageTires, coverageRedLight, coverageRoad } =
+  useSelector((state) => state.policy);
+ const { incrementCounter, decrementtCounter } = useCounterStore();
+
+ useEffect(() => {
+  if (counter > 16000) dispatch(decrementCoverageRedLight());
+  else dispatch(incrementCoverageRedLight());
+ }, []);
 
  return (
   <>
@@ -299,13 +318,13 @@ export const QuotePage = () => {
            mr: { md: "10%" },
           }}
          >
-          <Button sx={{ height: "100%" }}>
+          <Button onClick={decrementtCounter} sx={{ height: "100%" }}>
            <RemoveIcon sx={{ color: "#6464FA" }} />
           </Button>
 
-          <Box sx={{ fontSize: { xs: "1.3rem", md: "1rem" } }}>$ 14,300</Box>
+          <Box sx={{ fontSize: { xs: "1.3rem", md: "1rem" } }}>$ {counter}</Box>
 
-          <Button sx={{ height: "100%" }}>
+          <Button onClick={incrementCounter} sx={{ height: "100%" }}>
            <AddIcon sx={{ color: "#6464FA" }} />
           </Button>
          </Box>
@@ -375,6 +394,7 @@ export const QuotePage = () => {
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
           image={"src/assets/llantar.svg"}
+          coverageStatus={coverageTires}
          />
          <Acordion
           id={2}
@@ -384,6 +404,7 @@ export const QuotePage = () => {
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
           image={"src/assets/choque.svg"}
+          coverageStatus={coverageRedLight}
          />
          <Acordion
           id={3}
@@ -393,6 +414,7 @@ export const QuotePage = () => {
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
           image={"src/assets/atropello.svg"}
+          coverageStatus={coverageRoad}
          />
         </Box>
        </Box>
@@ -437,7 +459,7 @@ export const QuotePage = () => {
            fontWeight: "bold",
           }}
          >
-          $ 35.00
+          $ {payment}
          </Typography>
          <Typography
           variant='p'
