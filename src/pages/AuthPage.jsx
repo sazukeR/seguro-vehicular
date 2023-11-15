@@ -17,7 +17,7 @@ import useImagenResponsive from "../hooks/useImagenResponsive";
 import { HeadLayout } from "../layouts/HeadLayout";
 
 import { useAuthStore } from "../hooks/useAuthStore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 const loginFormFields = {
@@ -30,8 +30,8 @@ const loginFormFields = {
 export const AuthPage = () => {
  const { startLogin, errorMessage } = useAuthStore();
 
- const imagenPathGrande = "src/assets/ldng2.png";
- const imagenPathPequeno = "src/assets/lndxs.svg";
+ const imagenPathGrande = "./src/assets/ldng2.png";
+ const imagenPathPequeno = "./src/assets/lndxs.svg";
  const imagenPath = useImagenResponsive(imagenPathGrande, imagenPathPequeno);
 
  const theme = useTheme();
