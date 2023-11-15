@@ -16,7 +16,7 @@ export const HeadLayout = ({ children }) => {
      flexGrow: 1,
      m: "auto",
      bgcolor: "#FAFBFF",
-     /*  maxWidth: "1400px", */
+     maxWidth: "1400px",
     }}
     height='10vh'
    >
@@ -71,8 +71,8 @@ export const HeadLayout = ({ children }) => {
       </Grid>
      </Toolbar>
     </AppBar>
+    {children}
    </Box>
-   {children}
   </>
  );
 };

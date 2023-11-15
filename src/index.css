@@ -4,3 +4,69 @@ body {
   margin: 0;
   padding: 0;
 }
+
+input.acordion-input[type=checkbox] {
+  height: 0;
+  visibility: hidden;
+  width: 0;
+}
+
+label.acordion-label {
+  background: grey;
+  border-radius: 50px; /* Reducido a la mitad */
+  cursor: pointer;
+  display: block;
+  height: 50px; /* Reducido a la mitad */
+  position: relative;
+  text-indent: -9999px;
+  width: 100px; /* Reducido a la mitad */
+}
+
+ label.acordion-label:after {
+  background: #fff;
+  border-radius: 45px; /* Reducido a la mitad */
+  content: '';
+  height: 45px; /* Reducido a la mitad */
+  left: 2.5px; /* Reducido a la mitad */
+  position: absolute;
+  top: 2.5px; /* Reducido a la mitad */
+  transition: 0.3s;
+  width: 45px; /* Reducido a la mitad */
+}
+
+ input:checked.acordion-input + label {
+  background: #bada55;
+}
+
+label.acordion-label:active:after {
+  width: 65px; /* Reducido a la mitad */
+}
+
+ input.acordion-input:checked + label:after {
+  left: calc(100% - 2.5px); /* Reducido a la mitad */
+  transform: translateX(-100%);
+}
+
+ .my-button {
+  background-color:  #FF1C44; 
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  max-width: 400px;
+  padding: 20px 20px;
+  width: 70%;
+}
+
+
+@media screen and (min-width: 900px) {
+ .my-button {
+    padding: 20px 0; 
+  }
+}
+
+.MuiFormControlLabel-asterisk {
+  display: none;
+}

@@ -1,15 +1,13 @@
-import "./App.css";
-import { HeadLayout } from "./layouts/HeadLayout";
-import { QuotePage } from "./pages/QuotePage";
+import { AppRouter } from "./router/AppRouter";
+// import { QuotePage } from "./pages/QuotePage";
 // import { AuthPage } from './pages/AuthPage'
+import "./App.css";
 
 function App() {
  return (
-  <HeadLayout>
-   {/*   <AuthPage /> */}
-
-   <QuotePage />
-  </HeadLayout>
+  <>
+   <AppRouter />
+  </>
  );
 }
 

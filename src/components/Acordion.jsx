@@ -115,8 +115,10 @@ export const Acordion = ({ id, initialState, title, description, image }) => {
       >
        {/*       <input type='checkbox' id='switch' />
       <label htmlFor='switch'>Toggle</label> */}
-       <input type='checkbox' id={`switch-${id}`} />
-       <label htmlFor={`switch-${id}`}>Toggle</label>
+       <input className='acordion-input' type='checkbox' id={`switch-${id}`} />
+       <label className='acordion-label' htmlFor={`switch-${id}`}>
+        Toggle
+       </label>
       </Box>
      </Box>
     </AccordionSummary>
