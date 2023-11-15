@@ -6,7 +6,6 @@ import {
  login,
  logout,
 } from "../store/auth/authSlice";
-import { useEffect } from "react";
 
 export const useAuthStore = () => {
  const dispatch = useDispatch();
@@ -53,16 +52,6 @@ export const useAuthStore = () => {
   dispatch(logout());
  };
 
- const checkAuth = () => {
-  useEffect(() => {
-   const checking = async () => {
-    if (!localStorage.getItem("user_data")) return dispatch(logout());
-    return dispatch(login(JSON.parse(localStorage.getItem("user_data"))));
-   };
-   checking();
-  }, []);
- };
-
  return {
   // props
 
@@ -73,6 +62,5 @@ export const useAuthStore = () => {
   // methods
   startLogin,
   startLogout,
-  checkAuth,
  };
 };

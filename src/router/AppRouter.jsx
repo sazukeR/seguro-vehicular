@@ -4,11 +4,21 @@ import { QuotePage } from "../pages/QuotePage";
 import { ThanksPage } from "../pages/ThanksPage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { CheckingAuth } from "../components/CheckingAuth";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../store/auth/authSlice";
 
 export const AppRouter = () => {
- const { status, checkAuth } = useAuthStore();
+ const { status } = useAuthStore();
+ const dispatch = useDispatch();
 
- checkAuth();
+ useEffect(() => {
+  const checking = async () => {
+   if (!localStorage.getItem("user_data")) return dispatch(logout());
+   return dispatch(login(JSON.parse(localStorage.getItem("user_data"))));
+  };
+  checking();
+ }, []);
 
  if (status === "checking") {
   return <CheckingAuth />;
