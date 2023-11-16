@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 
 import {
@@ -11,7 +12,12 @@ import {
 } from "@mui/material";
 
 export const HeadLayout = ({ children }) => {
+ const navigate = useNavigate();
  const { startLogout } = useAuthStore();
+ const handleNavigation = () => {
+  startLogout();
+  navigate("/auth");
+ };
 
  return (
   <>
@@ -32,7 +38,7 @@ export const HeadLayout = ({ children }) => {
       <Grid container display='flex' justifyContent='space-between'>
        <Grid item>
         <IconButton
-         onClick={startLogout}
+         onClick={handleNavigation}
          size='large'
          edge='start'
          color='inherit'
