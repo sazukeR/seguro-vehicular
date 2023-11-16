@@ -100,10 +100,6 @@ export const Acordion = ({
      expandIcon={
       <ExpandMoreIcon sx={{ display: { xs: "none", md: "flex" } }} />
      }
-     /*     aria-controls='panel1a-content'
-     id='panel1a-header'
- */
-
      aria-controls={`panel-${id}-content`}
      id={`panel-${id}-header`}
     >

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
 
 import {
@@ -11,7 +12,12 @@ import {
 } from "@mui/material";
 
 export const HeadLayout = ({ children }) => {
+ const navigate = useNavigate();
  const { startLogout } = useAuthStore();
+ const handleNavigation = () => {
+  startLogout();
+  navigate("/auth");
+ };
 
  return (
   <>
@@ -32,13 +38,13 @@ export const HeadLayout = ({ children }) => {
       <Grid container display='flex' justifyContent='space-between'>
        <Grid item>
         <IconButton
-         onClick={startLogout}
+         onClick={handleNavigation}
          size='large'
          edge='start'
          color='inherit'
          aria-label='menu'
         >
-         <img src='src\assets\Logo_RIMAC.svg' />
+         <img src='./src/assets/Logo_RIMAC.svg' />
         </IconButton>
        </Grid>
 
@@ -62,7 +68,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='src\assets\gl_phone-20x20.png' />
+          <img src='./src/assets/gl_phone-20x20.png' />
          </IconButton>
          <Typography component='span'>Llamanos</Typography>
         </Link>
@@ -72,7 +78,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='src\assets\gl_phone-20x20.png' />
+          <img src='./src/assets/gl_phone-20x20.png' />
          </IconButton>
          <Typography component='span'>(01) 411 6001</Typography>
         </Link>

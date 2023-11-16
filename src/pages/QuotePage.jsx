@@ -258,7 +258,7 @@ export const QuotePage = () => {
             overflowX: "hidden",
            }}
            alt='The house from the offer.'
-           src='src\assets\ldnb.png'
+           src='./src/assets/ldnb.png'
           />
          </Box>
         </Box>
@@ -388,7 +388,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"src/assets/llantar.svg"}
+          image={"./src/assets/llantar.svg"}
           coverageStatus={coverageTires}
          />
          <Acordion
@@ -398,7 +398,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"src/assets/choque.svg"}
+          image={"./src/assets/choque.svg"}
           coverageStatus={coverageRedLight}
          />
          <Acordion
@@ -408,7 +408,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"src/assets/atropello.svg"}
+          image={"./src/assets/atropello.svg"}
           coverageStatus={coverageRoad}
          />
         </Box>
