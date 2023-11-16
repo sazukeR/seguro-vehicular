@@ -24,7 +24,7 @@ const loginFormFields = {
  doc: "DNI",
  noDoc: "",
  cel: "",
- placa: "",
+ placa: "ABC-123",
 };
 
 export const AuthPage = () => {
