@@ -1,7 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useCounterStore } from "../hooks/useCounterStore";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useNavigate } from "react-router-dom";
+
+import ldnb from "../public/ldnb.png";
+import llantar from "../public/llantar.svg";
+import choque from "../public/choque.svg";
+import atropello from "../public/atropello.svg";
+
 import {
  Grid,
  Button,
@@ -258,7 +264,7 @@ export const QuotePage = () => {
             overflowX: "hidden",
            }}
            alt='The house from the offer.'
-           src='./src/assets/ldnb.png'
+           src={ldnb}
           />
          </Box>
         </Box>
@@ -388,7 +394,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"./src/assets/llantar.svg"}
+          image={llantar}
           coverageStatus={coverageTires}
          />
          <Acordion
@@ -398,7 +404,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"./src/assets/choque.svg"}
+          image={choque}
           coverageStatus={coverageRedLight}
          />
          <Acordion
@@ -408,7 +414,7 @@ export const QuotePage = () => {
           description={
            "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más."
           }
-          image={"./src/assets/atropello.svg"}
+          image={atropello}
           coverageStatus={coverageRoad}
          />
         </Box>

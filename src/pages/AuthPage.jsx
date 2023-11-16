@@ -20,6 +20,9 @@ import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
+import ldng2 from "../public/ldng2.png";
+import lndxs from "../public/lndxs.svg";
+
 const loginFormFields = {
  doc: "DNI",
  noDoc: "",
@@ -30,8 +33,8 @@ const loginFormFields = {
 export const AuthPage = () => {
  const { startLogin, errorMessage } = useAuthStore();
 
- const imagenPathGrande = "./src/assets/ldng2.png";
- const imagenPathPequeno = "./src/assets/lndxs.svg";
+ const imagenPathGrande = ldng2;
+ const imagenPathPequeno = lndxs;
  const imagenPath = useImagenResponsive(imagenPathGrande, imagenPathPequeno);
 
  const theme = useTheme();

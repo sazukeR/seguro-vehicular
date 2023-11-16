@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
+import logo from "../public/Logo_RIMAC.svg";
+import phone from "../public/gl_phone-20x20.png";
 
 import {
  Grid,
@@ -44,7 +46,7 @@ export const HeadLayout = ({ children }) => {
          color='inherit'
          aria-label='menu'
         >
-         <img src='./src/assets/Logo_RIMAC.svg' />
+         <img src={logo} />
         </IconButton>
        </Grid>
 
@@ -68,7 +70,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='./src/assets/gl_phone-20x20.png' />
+          <img src={phone} />
          </IconButton>
          <Typography component='span'>Llamanos</Typography>
         </Link>
@@ -78,7 +80,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='./src/assets/gl_phone-20x20.png' />
+          <img src={phone} />
          </IconButton>
          <Typography component='span'>(01) 411 6001</Typography>
         </Link>
