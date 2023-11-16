@@ -37,13 +37,6 @@ export const AuthPage = () => {
  const theme = useTheme();
 
  const { doc, noDoc, cel, placa, onInputChange } = useForm(loginFormFields);
- //const [errorValidation, setErrorValidation] = useState("");
-
- /*  useEffect(() => {
-  if (errorValidation !== "Todos los campos son obligatorios") {
-   console.log("rr");
-  }
- }, [errorValidation]); */
 
  const onSubmit = (e) => {
   e.preventDefault();
@@ -154,8 +147,6 @@ export const AuthPage = () => {
       </Typography>
      </Grid>
 
-     {/* <img src='src\assets\lndxs.svg' /> */}
-
      <Box
       component='img'
       sx={{
@@ -192,9 +183,6 @@ export const AuthPage = () => {
       <FormControl>
        <Grid container sx={{ maxWidth: "600px" }}>
         <Grid item xs={12} sx={{ mt: 0, display: "flex" }}>
-         {/*      <InputLabel id='select' sx={{ fontWeight: "bold" }}>
-        Doc
-       </InputLabel> */}
          <Select
           labelId='select'
           id='simple-select'
@@ -270,13 +258,9 @@ export const AuthPage = () => {
             .
            </Typography>
           }
-          /* style={{ marginTop: '-4px' }} */
          />
         </Grid>
         <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
-         {/*        <Grid item xs={12} display={!!errorMessage ? "" : "none"}>
-        <Alert severity='error'>{errorMessage}</Alert>
-       </Grid> */}
          <Grid item xs={12} sm={6}>
           <Button
            type='submit'

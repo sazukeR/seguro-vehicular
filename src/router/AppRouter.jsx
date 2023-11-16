@@ -1,12 +1,12 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../store/auth/authSlice";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthPage } from "../pages/AuthPage";
 import { QuotePage } from "../pages/QuotePage";
 import { ThanksPage } from "../pages/ThanksPage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { CheckingAuth } from "../components/CheckingAuth";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { login, logout } from "../store/auth/authSlice";
 
 export const AppRouter = () => {
  const { status } = useAuthStore();

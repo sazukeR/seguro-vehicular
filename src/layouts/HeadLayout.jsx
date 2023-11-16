@@ -44,7 +44,7 @@ export const HeadLayout = ({ children }) => {
          color='inherit'
          aria-label='menu'
         >
-         <img src='src\assets\Logo_RIMAC.svg' />
+         <img src='./src/assets/Logo_RIMAC.svg' />
         </IconButton>
        </Grid>
 
@@ -68,7 +68,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='src\assets\gl_phone-20x20.png' />
+          <img src='./src/assets/gl_phone-20x20.png' />
          </IconButton>
          <Typography component='span'>Llamanos</Typography>
         </Link>
@@ -78,7 +78,7 @@ export const HeadLayout = ({ children }) => {
          color='#6F7DFF'
         >
          <IconButton>
-          <img src='src\assets\gl_phone-20x20.png' />
+          <img src='./src/assets/gl_phone-20x20.png' />
          </IconButton>
          <Typography component='span'>(01) 411 6001</Typography>
         </Link>

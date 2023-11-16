@@ -5,7 +5,7 @@ export const useForm = (initialForm = {}) => {
 
  const onInputChange = ({ target }) => {
   const { name, value } = target;
-  let transformedValue = value; //jnjn
+  let transformedValue = value;
 
   if (name === "placa") {
    transformedValue = value.toUpperCase();
@@ -20,7 +20,7 @@ export const useForm = (initialForm = {}) => {
 
   setFormState({
    ...formState,
-   [name]: transformedValue, //value,
+   [name]: transformedValue,
   });
  };
 
