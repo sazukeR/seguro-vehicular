@@ -3,6 +3,8 @@ import { Grid, Box, Typography, Button } from "@mui/material";
 import { HeadLayout } from "../layouts/HeadLayout";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import thnksdsk from "../public/thnksdsk.png";
+import thnksmb from "../public/thnksmb.png";
 
 export const ThanksPage = () => {
  const { user } = useSelector((state) => state.auth);
@@ -32,7 +34,7 @@ export const ThanksPage = () => {
        borderTop: { xs: "1px solid #B5B5B5", md: "none" },
       }}
       alt='The house from the offer.'
-      src={"./src/assets/thnksmb.png"}
+      src={thnksmb}
      />
      <Box
       component='img'
@@ -45,7 +47,7 @@ export const ThanksPage = () => {
        borderTop: { xs: "1px solid #B5B5B5", md: "none" },
       }}
       alt='The house from the offer.'
-      src={"./src/assets/thnksdsk.png"}
+      src={thnksdsk}
      />
     </Grid>
 
