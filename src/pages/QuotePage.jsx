@@ -3,10 +3,10 @@ import { useCounterStore } from "../hooks/useCounterStore";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useNavigate } from "react-router-dom";
 
-import ldnb from "../public/ldnb.png";
-import llantar from "../public/llantar.svg";
-import choque from "../public/choque.svg";
-import atropello from "../public/atropello.svg";
+import ldnb from "../../public/ldnb.png";
+import llantar from "../../public/llantar.svg";
+import choque from "../../public/choque.svg";
+import atropello from "../../public/atropello.svg";
 
 import {
  Grid,
