@@ -20,8 +20,8 @@ import { useAuthStore } from "../hooks/useAuthStore";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
-import ldng2 from "../../public/ldng2";
-import lndxs from "../../public/lndxs.svg";
+import ldng2 from "../images/ldng2.png";
+import lndxs from "../images/lndxs.svg";
 
 const loginFormFields = {
  doc: "DNI",

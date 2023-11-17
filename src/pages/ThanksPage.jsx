@@ -3,8 +3,8 @@ import { Grid, Box, Typography, Button } from "@mui/material";
 import { HeadLayout } from "../layouts/HeadLayout";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { useNavigate } from "react-router-dom";
-import thnksdsk from "../../public/thnksdsk.png";
-import thnksmb from "../../public/thnksmb.png";
+import thnksdsk from "../images/thnksdsk.png";
+import thnksmb from "../images/thnksmb.png";
 
 export const ThanksPage = () => {
  const { user } = useSelector((state) => state.auth);

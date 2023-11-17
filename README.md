@@ -10,13 +10,13 @@ Application to obtain a quote for a vehicle insurance policy. You can log in usi
 
 
 
-<img src="./public/loginpage.png" alt="Login" width="100" height="200">
+<img src="./src/images/loginpage.png" alt="Login" width="100" height="200">
 
 When accessing the quote page, you'll be able to add or remove vehicle insurance coverages to build your payment plan.
 
-<img src="./public/quotepage.png" alt="Quote" width="200" height="150">
+<img src="./src/images/quotepage.png" alt="Quote" width="200" height="150">
 &nbsp
-<img src="./public/thankspage.png" alt="Quote" width="100" height="200">
+<img src="./src/images/thankspage.png" alt="Thanks" width="100" height="200">
 
 
 ## Used Tools
@@ -71,7 +71,7 @@ You can create your own API and use it in the 'api/' folder. Additionally, you c
 [visit jsonplaceholder](https://jsonplaceholder.typicode.com/)
 
 
-<img src="./public/fileapi.png" alt="Login" width="200" height="50">
+<img src="./src/images/fileapi.png" alt="src/api" width="200" height="50">
 
 
 ## MIT License
