@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../hooks/useAuthStore";
-import logo from "../public/Logo_RIMAC.svg";
-import phone from "../public/gl_phone-20x20.png";
+import logo from "../../public/Logo_RIMAC.svg";
+import phone from "../../public/gl_phone-20x20.png";
 
 import {
  Grid,
