@@ -71,7 +71,7 @@ You can create your own API and use it in the 'api/' folder. Additionally, you c
 [visit jsonplaceholder](https://jsonplaceholder.typicode.com/)
 
 
-<img src="./public/fileapi.png" alt="Login" width="200" height="50">
+<img src="./src/images/fileapi.png" alt="src/api" width="200" height="50">
 
 
 ## MIT License
